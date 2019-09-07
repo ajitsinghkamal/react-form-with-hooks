@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-
+import styled, { ThemeProvider } from 'styled-components';
+import theme from 'assets/theme';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import { Wrapper } from 'components/Elements';
@@ -22,16 +22,18 @@ const Main = styled(Wrapper)`
 `;
 function Shell() {
 	return (
-		<Container>
-			<Router>
-				<Header />
-				<Main as="main">
-					<Route path="/" exact component={Form} />
-					<Route path="/submissions/" component={List} />
-				</Main>
-				<Footer />
-			</Router>
-		</Container>
+		<ThemeProvider theme={theme}>
+			<Container>
+				<Router>
+					<Header />
+					<Main as="main">
+						<Route path="/" exact component={Form} />
+						<Route path="/submissions/" component={List} />
+					</Main>
+					<Footer />
+				</Router>
+			</Container>
+		</ThemeProvider>
 	);
 }
 
