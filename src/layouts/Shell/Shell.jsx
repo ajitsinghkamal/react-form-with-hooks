@@ -7,7 +7,7 @@ import { Wrapper } from 'components/Elements';
 import Form from 'views/Form';
 import List from 'views/List';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
+import { DetailsProvider } from 'state/detailsContext';
 const Container = styled.div`
 	display: flex;
 	flex-flow: column nowrap;
@@ -26,10 +26,12 @@ function Shell() {
 			<Container>
 				<Router>
 					<Header />
-					<Main as="main">
-						<Route path="/" exact component={Form} />
-						<Route path="/submissions/" component={List} />
-					</Main>
+					<DetailsProvider>
+						<Main as="main">
+							<Route path="/" exact component={Form} />
+							<Route path="/submissions/" component={List} />
+						</Main>
+					</DetailsProvider>
 					<Footer />
 				</Router>
 			</Container>

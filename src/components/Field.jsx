@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const FieldWrap = styled.div`position: relative;`;
 const Input = styled.input`
 	font-size: 1rem;
 	display: block;
@@ -9,7 +10,7 @@ const Input = styled.input`
 	margin: 10px 0 30px;
 	border: 0;
 	border-radius: 8px;
-	box-shadow: 0 0px 0px 1px ${(props) => props.theme.cb10};
+	box-shadow: 0 0px 0px 1px ${(props) => (props.hasError ? props.theme.cr00 : props.theme.cb10)};
 	transition: box-shadow 0.3s;
 	&:focus {
 		outline: 0;
@@ -20,11 +21,18 @@ const Label = styled.label`
 	font-size: 0.875rem;
 	font-weight: 600;
 `;
+const Error = styled.small`
+	font-weight: 600;
+	color: ${(props) => props.theme.cr00};
+	position: absolute;
+	bottom: -20px;
+`;
 function Field(props) {
 	return (
-		<div>
+		<FieldWrap>
 			<Label>{props.label}</Label>
 			<Input
+				error={props.hasError}
 				type={props.type}
 				placeholder={props.placeholder}
 				autoComplete={props.auto || 'off'}
@@ -34,7 +42,8 @@ function Field(props) {
 						value: e.target.value
 					})}
 			/>
-		</div>
+			{props.hasError ? <Error>{props.hasError}</Error> : null}
+		</FieldWrap>
 	);
 }
 export default Field;
