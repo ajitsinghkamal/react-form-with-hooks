@@ -14,7 +14,7 @@ const Container = styled.div`
 	align-items: stretch;
 	height: 100vh;
 	width: 100vw;
-	overflow: hidden;
+	overflow-x: hidden;
 `;
 const Main = styled(Wrapper)`
 	flex: 1 0 auto;
