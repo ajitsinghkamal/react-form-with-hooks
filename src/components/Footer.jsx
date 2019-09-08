@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 import { BtnMixin, Wrapper } from './Elements';
+import DetailsContext from 'state/detailsContext';
 
 const Container = styled.footer`box-shadow: 1px 0 0 1px ${(props) => props.theme.cd10};`;
 const Wrap = styled(Wrapper)`
@@ -22,14 +23,28 @@ const NavItem = styled(NavLink)`
 	}
 
 `;
+const Badge = styled.span`
+	width: 15px;
+	height: 15px;
+	line-height: 15px;
+	display: inline-block;
+	border-radius: 50%;
+	font-size: 12px;
+	margin: 0 10px;
+	background: #fff;
+	color: #2d2d2d;
+`;
 function Footer(props) {
+	const { list } = useContext(DetailsContext);
 	return (
 		<Container>
 			<Wrap as="nav">
 				<NavItem to="/" exact>
 					Form
 				</NavItem>
-				<NavItem to="/submissions/">Submissions</NavItem>
+				<NavItem to="/submissions/">
+					Submissions <Badge>{list && list.length}</Badge>
+				</NavItem>
 			</Wrap>
 		</Container>
 	);

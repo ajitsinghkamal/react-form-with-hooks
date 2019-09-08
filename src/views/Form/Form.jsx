@@ -85,7 +85,7 @@ function Form() {
 	 * return true if a duplicate value found
 	 */
 	function checkDuplicate(field, value) {
-		return list.some((record) => record[field] === value);
+		return list.some((record) => record[field].value === value);
 	}
 	// check for errors and update state with error
 	function checkFieldErrors() {
@@ -117,7 +117,7 @@ function Form() {
 		if (isFormValid) {
 			// no errors update the record in central list
 			setDetails({ ...initialiseState() });
-			shouldUpdateList({ ...details, time: Date.now() });
+			shouldUpdateList({ ...details, time: new Date().toUTCString() });
 		}
 	}
 

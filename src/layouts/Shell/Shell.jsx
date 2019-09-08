@@ -26,14 +26,14 @@ function Shell() {
 		<ThemeProvider theme={theme}>
 			<Container>
 				<Router>
-					<Header />
 					<DetailsProvider>
+						<Header />
 						<Main as="main">
 							<Route path="/" exact component={Form} />
 							<Route path="/submissions/" component={List} />
 						</Main>
+						<Footer />
 					</DetailsProvider>
-					<Footer />
 				</Router>
 			</Container>
 		</ThemeProvider>

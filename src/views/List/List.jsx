@@ -33,6 +33,8 @@ const BodyRow = styled.tr`
 `;
 const RowCell = styled.td`
 	${Cell};
+	line-height: 1.5;
+	vertical-align: top;
 	@media screen and (max-width: 767px) {
 		display: table-row;
 		line-height: 2;
