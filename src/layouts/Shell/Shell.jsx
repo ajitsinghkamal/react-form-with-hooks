@@ -18,7 +18,8 @@ const Container = styled.div`
 `;
 const Main = styled(Wrapper)`
 	flex: 1 0 auto;
-	width: 100%
+	width: 100%;
+	position: relative;
 `;
 function Shell() {
 	return (
