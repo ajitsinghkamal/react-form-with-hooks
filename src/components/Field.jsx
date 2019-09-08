@@ -29,7 +29,6 @@ const Label = styled.label`
 	}
 `;
 const Error = styled.small`
-	font-weight: 600;
 	color: ${(props) => props.theme.cr00};
 	position: absolute;
 	bottom: -20px;
@@ -44,6 +43,7 @@ function Field(props) {
 					type={props.type}
 					placeholder={props.placeholder}
 					autoComplete={props.auto || 'off'}
+					value={props.value}
 					onChange={(e) =>
 						props.set({
 							key: props.fieldKey,
